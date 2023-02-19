@@ -14,7 +14,7 @@ def aws_resources_output(resource,resource_id):
     try:
         subprocess.run(
             [
-                "terraformer-datadog",
+                "terraformer",
                 "import",
                 "datadog",
                 "--resources={}".format(resource),

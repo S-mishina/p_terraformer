@@ -9,6 +9,17 @@ from config.cli_conf import aws_secret_get
 def datadog_resources_output(
     provider, secret_type, api_key, app_key, resource_id, region, resource
 ):
+    """_summary_
+
+    Args:
+        provider (_type_): _description_
+        secret_type (_type_): _description_
+        api_key (_type_): _description_
+        app_key (_type_): _description_
+        resource_id (_type_): _description_
+        region (_type_): _description_
+        resource (_type_): _description_
+    """
     if secret_type == "default":
         pass
     else:
@@ -17,7 +28,7 @@ def datadog_resources_output(
     try:
         subprocess.run(
             [
-                "terraformer-datadog",
+                "terraformer",
                 "import",
                 "{}".format(provider),
                 "--resources={}".format(resource),

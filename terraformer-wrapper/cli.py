@@ -2,12 +2,16 @@
 This module provides a wrapper for the Terraformer,
 allowing users to programmatically interact with Terraformer.
 """
-import os
 import argparse
 import logging
+import os
 
-from command.datadog_generator import *
-from command.terraform_generator import *
+from cmd.terraform_generator import generation_datadog
+from cmd.terraform_generator import generation_aws
+from cmd.datadog_generator import datadog_resources_output
+
+from config.cli_conf import getenv
+
 
 def main(args):
     """_summary_
@@ -15,7 +19,9 @@ def main(args):
     Args:
         args (Array): Getting Command Arguments
     """
-    if not args.provider == "" or args.resource_id == "":
+    if args.provider == "" or args.resource_id == "":
+        print(args.provider)
+        print(args.resource_id)
         parser.print_help()
         print("\n")
         logging.warning("not provider or not provider resource_id")
@@ -35,7 +41,7 @@ def main(args):
             if args.no_tf:
                 pass
             else:
-                generation_datadog(args.terraform_version, args.provider_version)
+                generation_datadog(args.terraform_version, args.datadog_provider_version)
             datadog_resources_output(
                 args.provider,
                 args.type,
@@ -55,11 +61,12 @@ def main(args):
             if args.no_tf:
                 pass
             else:
-                generation_aws(args.terraform_version, args.provider_version,args.aws_region)
+                generation_aws(args.terraform_version, args.aws_provider_version,args.aws_region)
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
+    getenv()
     parser = argparse.ArgumentParser(description="terraformer python rapper")
     subparsers = parser.add_subparsers(
         dest="provider", help="Provider Generation ex) datadog or aws"
