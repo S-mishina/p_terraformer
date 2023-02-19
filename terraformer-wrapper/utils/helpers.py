@@ -1,5 +1,7 @@
 from pathlib import Path
 import datetime
+import subprocess
+import logging
 
 def generate_filename():
     """_summary_
@@ -19,3 +21,11 @@ def file_handling(dt_now):
     """
     generated_dir = Path("generated")
     generated_dir.rename(dt_now)
+
+def terraform_init():
+    """_summary_
+    """
+    try:
+        subprocess.run(["terraform","init"])
+    except subprocess.CalledProcessError:
+        logging.warning("")

@@ -6,8 +6,8 @@ import os
 import argparse
 import logging
 
-from command.datadog_generator import datadog_resources_output
-
+from command.datadog_generator import *
+from command.terraform_generator import *
 
 def main(args):
     """_summary_
@@ -31,6 +31,11 @@ def main(args):
                     args.resource_id,
                 )
             )
+            # Whether to generate .tf files
+            if args.no_tf:
+                pass
+            else:
+                generation_datadog(args.terraform_version, args.provider_version)
             datadog_resources_output(
                 args.provider,
                 args.type,
@@ -41,9 +46,16 @@ def main(args):
                 args.resource,
             )
         else:
-            logging.info(args.profile)
-            logging.info(args.resource)
-            logging.info(args.resource_id)
+            # Whether to generate .tf files
+            logging.info(
+                "aws profile:{0},aws resource:{1},aws resource id{2}".format(
+                    args.profile, args.resource, args.resource_id
+                )
+            )
+            if args.no_tf:
+                pass
+            else:
+                generation_aws(args.terraform_version, args.provider_version,args.aws_region)
 
 
 if __name__ == "__main__":
@@ -91,7 +103,22 @@ if __name__ == "__main__":
     secret_parser.add_argument(
         "--resource_id",
         type=str,
-        help="datadog resource id :ex) datadog resource id is xxxxx >> input resource id xxxxx",
+        default="dashboard",
+        help="Use only to create a .tf for execution.",
+    )
+    secret_parser.add_argument('--no-tf', action='store_true',
+                    help='Do not generate .tf files')
+    secret_parser.add_argument(
+        "--terraform_version",
+        type=str,
+        default="0.13.6",
+        help="Use only to create a .tf for execution. default terraform version 0.13.6 ex) terraform version 0.14.11 >> input 0.14.11",
+    )
+    secret_parser.add_argument(
+        "--datadog_provider_version",
+        type=str,
+        default="3.12.0",
+        help="Use only to create a .tf for execution. default terraform datadog provider version 3.12.0 ex) datadog provider version 3.12.0 >> input 3.12.0",
     )
 
     # AWS
@@ -109,6 +136,26 @@ if __name__ == "__main__":
         "--resource_id",
         type=str,
         help="datadog resource id :ex) datadog resource id is xxxxx >> input resource id xxxxx",
+    )
+    aws_parser.add_argument('--no-tf', action='store_true',
+                    help='Do not generate .tf files')
+    aws_parser.add_argument(
+        "--terraform_version",
+        type=str,
+        default="0.13.6",
+        help="Use only to create a .tf for execution. default terraform version 0.13.6 ex) terraform version 0.14.11 >> input 0.14.11",
+    )
+    aws_parser.add_argument(
+        "--aws_provider_version",
+        type=str,
+        default="3.12.0",
+        help="Use only to create a .tf for execution. default terraform aws provider version 4.0 ex) datadog provider version 4.0 >> input 4.0",
+    )
+    aws_parser.add_argument(
+        "--aws_region",
+        type=str,
+        default="us-east-1",
+        help="Use only to create a .tf for execution. default aws region us-east-1 ex) aws region us-east-1 >> input us-east-1",
     )
     args = parser.parse_args()
     main(args)
