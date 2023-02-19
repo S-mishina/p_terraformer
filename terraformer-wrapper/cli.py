@@ -5,6 +5,7 @@ allowing users to programmatically interact with Terraformer.
 import argparse
 import logging
 import os
+import sys
 
 from cmd.terraform_generator import generation_datadog
 from cmd.terraform_generator import generation_aws
@@ -19,49 +20,41 @@ def main(args):
     Args:
         args (Array): Getting Command Arguments
     """
-    if args.provider == "" or args.resource_id == "":
-        print(args.provider)
-        print(args.resource_id)
-        parser.print_help()
-        print("\n")
-        logging.warning("not provider or not provider resource_id")
-        return
-    else:
-        if args.provider == "datadog":
-            logging.info(
-                "provider:{0},app_key_secret_id:{1},app_key_secret_id:{2},resource:{3},resource id:{4}".format(
-                    args.provider,
-                    args.api_key_secret_id,
-                    args.app_key_secret_id,
-                    args.resource,
-                    args.resource_id,
-                )
-            )
-            # Whether to generate .tf files
-            if args.no_tf:
-                pass
-            else:
-                generation_datadog(args.terraform_version, args.datadog_provider_version)
-            datadog_resources_output(
+    if args.provider == "datadog":
+        logging.info(
+            "provider:{0},app_key_secret_id:{1},app_key_secret_id:{2},resource:{3},resource id:{4}".format(
                 args.provider,
-                args.type,
                 args.api_key_secret_id,
                 args.app_key_secret_id,
-                args.resource_id,
-                args.region,
                 args.resource,
+                args.resource_id,
             )
+        )
+        # Whether to generate .tf files
+        if args.no_tf:
+            pass
         else:
-            # Whether to generate .tf files
-            logging.info(
-                "aws profile:{0},aws resource:{1},aws resource id{2}".format(
-                    args.profile, args.resource, args.resource_id
-                )
+            generation_datadog(args.terraform_version, args.datadog_provider_version)
+        datadog_resources_output(
+            args.provider,
+            args.type,
+            args.api_key_secret_id,
+            args.app_key_secret_id,
+            args.resource_id,
+            args.region,
+            args.resource,
+        )
+    else:
+        # Whether to generate .tf files
+        logging.info(
+            "aws profile:{0},aws resource:{1},aws resource id{2}".format(
+                args.profile, args.resource, args.resource_id
             )
-            if args.no_tf:
-                pass
-            else:
-                generation_aws(args.terraform_version, args.aws_provider_version,args.aws_region)
+        )
+        if args.no_tf:
+            pass
+        else:
+            generation_aws(args.terraform_version, args.aws_provider_version,args.aws_region)
 
 
 if __name__ == "__main__":
@@ -165,4 +158,11 @@ if __name__ == "__main__":
         help="Use only to create a .tf for execution. default aws region us-east-1 ex) aws region us-east-1 >> input us-east-1",
     )
     args = parser.parse_args()
-    main(args)
+    if args.provider==None:
+        parser.print_help()
+    if args.provider=="datadog" and args.subcommand==None:
+        secret_parser.print_help()
+        
+    else:
+        aws_parser.print_help()
+        main(args)

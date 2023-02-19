@@ -11,11 +11,11 @@ setup(
     author="S-mishina",
     packages=find_packages(),
     install_requires=requirements,
-    entry_points={
-        'console_scripts': [
-            'mycommand=terraformer-wrapper.cli:main'
-        ]
-    }
+    # entry_points={
+    #     'console_scripts': [
+    #         'mycommand=terraformer-wrapper.cli:main'
+    #     ]
+    # }
 )
 print(find_packages())
 operation=platform.system()
