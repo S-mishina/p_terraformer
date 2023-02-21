@@ -2,5 +2,8 @@ function_test
 __pycache__
 dist
 build
-terraform_python_wrapper.egg-info
+mycli.egg-info
+
 main.tf
+test
+test1

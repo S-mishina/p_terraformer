@@ -5,16 +5,15 @@ allowing users to programmatically interact with Terraformer.
 import argparse
 import logging
 import os
-import sys
 
-from cmd.terraform_generator import generation_datadog
-from cmd.terraform_generator import generation_aws
-from cmd.datadog_generator import datadog_resources_output
+from mycli.cmd.terraform_generator import generation_datadog
+from mycli.cmd.terraform_generator import generation_aws
+from mycli.cmd.datadog_generator import datadog_resources_output
 
-from config.cli_conf import getenv
+from mycli.config.cli_conf import getenv
 
 
-def main(args):
+def cli(args):
     """_summary_
 
     Args:
@@ -56,10 +55,9 @@ def main(args):
         else:
             generation_aws(args.terraform_version, args.aws_provider_version,args.aws_region)
 
-
-if __name__ == "__main__":
+def main():
     logging.basicConfig(level=logging.INFO)
-    getenv()
+    # getenv()
     parser = argparse.ArgumentParser(description="terraformer python rapper")
     subparsers = parser.add_subparsers(
         dest="provider", help="Provider Generation ex) datadog or aws"
@@ -124,7 +122,10 @@ if __name__ == "__main__":
     # AWS
     aws_parser = subparsers.add_parser("aws", help="AWS terraform Generation")
     aws_parser.add_argument(
-        "--profile", type=str, default="default", help="default aws profile default"
+        "--profile",
+        type=str,
+        default="default",
+        help="default aws profile default"
     )
     aws_parser.add_argument(
         "--resource",
@@ -160,9 +161,12 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.provider==None:
         parser.print_help()
+        return
     if args.provider=="datadog" and args.subcommand==None:
         secret_parser.print_help()
-        
+        return
     else:
-        aws_parser.print_help()
-        main(args)
+        cli(args)
+
+if __name__ == "__main__":
+    main()

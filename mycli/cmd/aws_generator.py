@@ -1,8 +1,8 @@
 import logging
 import subprocess
 
-from utils.helpers import generate_filename
-from utils.helpers import file_handling
+from mycli.utils.helpers import generate_filename
+from mycli.utils.helpers import file_handling
 
 def aws_resources_output(resource,resource_id):
     """_summary_
