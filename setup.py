@@ -10,7 +10,7 @@ setup(
     install_requires=requirements,
     entry_points={
         'console_scripts': [
-            'mycli = mycli.cli:main'
+            'w_terraformer = mycli.cli:main'
         ]
     }
 )

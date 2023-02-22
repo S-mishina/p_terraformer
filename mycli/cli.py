@@ -47,7 +47,7 @@ def cli(args):
         # Whether to generate .tf files
         logging.info(
             "aws profile:{0},aws resource:{1},aws resource id{2}".format(
-                args.profile, args.resource, args.resource_id
+                args.aws_profile, args.resource, args.resource_id
             )
         )
         if args.no_tf:
@@ -122,7 +122,7 @@ def main():
     # AWS
     aws_parser = subparsers.add_parser("aws", help="AWS terraform Generation")
     aws_parser.add_argument(
-        "--profile",
+        "--aws_profile",
         type=str,
         default="default",
         help="default aws profile default"
