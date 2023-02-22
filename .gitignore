@@ -2,7 +2,7 @@ function_test
 __pycache__
 dist
 build
-mycli.egg-info
+p_terraformer.egg-info
 
 main.tf
 test

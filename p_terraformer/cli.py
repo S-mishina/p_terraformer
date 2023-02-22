@@ -6,11 +6,11 @@ import argparse
 import logging
 import os
 
-from mycli.cmd.terraform_generator import generation_datadog
-from mycli.cmd.terraform_generator import generation_aws
-from mycli.cmd.datadog_generator import datadog_resources_output
+from p_terraformer.cmd.terraform_generator import generation_datadog
+from p_terraformer.cmd.terraform_generator import generation_aws
+from p_terraformer.cmd.datadog_generator import datadog_resources_output
 
-from mycli.config.cli_conf import getenv
+from p_terraformer.config.cli_conf import getenv
 
 
 def cli(args):

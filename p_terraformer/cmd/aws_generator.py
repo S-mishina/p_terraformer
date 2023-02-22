@@ -1,8 +1,8 @@
 import logging
 import subprocess
 
-from mycli.utils.helpers import generate_filename
-from mycli.utils.helpers import file_handling
+from p_terraformer.utils.helpers import generate_filename
+from p_terraformer.utils.helpers import file_handling
 
 def aws_resources_output(resource,resource_id):
     """_summary_

@@ -1,10 +1,10 @@
 import logging
 import subprocess
 
-from mycli.utils.helpers import generate_filename
-from mycli.utils.helpers import file_handling
+from p_terraformer.utils.helpers import generate_filename
+from p_terraformer.utils.helpers import file_handling
 
-from mycli.config.cli_conf import aws_secret_get
+from p_terraformer.config.cli_conf import aws_secret_get
 
 def datadog_resources_output(
     provider, secret_type, api_key, app_key, resource_id, region, resource
