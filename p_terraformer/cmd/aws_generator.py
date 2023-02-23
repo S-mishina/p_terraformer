@@ -22,6 +22,7 @@ def aws_resources_output(resource,resource_id):
             ], check=True
         )
     except subprocess.CalledProcessError:
+        # TODO: include an error phrase
         logging.warning("")
     dt_now=generate_filename()
     file_handling(dt_now)

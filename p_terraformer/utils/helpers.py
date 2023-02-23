@@ -28,4 +28,5 @@ def terraform_init():
     try:
         subprocess.run(["terraform","init"])
     except subprocess.CalledProcessError:
+        # TODO: include an error phrase
         logging.warning("")
