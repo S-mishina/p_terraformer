@@ -1,7 +1,8 @@
-# terrafomrmer-python-wrapper
-A python wrapper for Terraformer.
+# p_terraformer
 
-## support
+p_terraformer is a CLI that extends terraformer.
+
+## support platform
 
 The following environments are supported
 
@@ -10,8 +11,17 @@ The following environments are supported
 
 ## install
 
+* terraformer
+
 ```:terminal
-python setup.py build
+python terraformer_install.py
 ```
 
-## 
+* CLI
+
+```:terminal
+python setup.py install
+```
+
+## quick
+
