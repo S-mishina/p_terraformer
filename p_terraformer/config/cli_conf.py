@@ -2,9 +2,33 @@ import os
 import logging
 import ast
 import boto3
+import yaml
 from botocore.exceptions import ClientError
 from dotenv import load_dotenv
 
+
+def make_config_yaml():
+    """_summary_
+    """
+    # TODO: Create a folder on first run
+    p_terraformer_config_folder = os.getenv("HOME")+"/.p_terraformer"
+    os.makedirs(p_terraformer_config_folder, exist_ok=True)
+    # TODO: Create yaml file if file does not exist
+    p_terraformer_config_path=p_terraformer_config_folder+"/config.yaml"
+    if os.path.isfile(p_terraformer_config_path):
+        pass
+    else:
+        data = {
+            "profile": [
+                {
+                    "name": "default",
+                    "api_key": "",
+                    "app_key": ""
+                }
+            ]
+        }
+        with open(p_terraformer_config_path, "w") as f:
+            yaml.dump(data, f, default_flow_style=False, sort_keys=False)
 
 def getenv():
     """_summary_
