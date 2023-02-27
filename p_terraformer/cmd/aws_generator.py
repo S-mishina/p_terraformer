@@ -4,7 +4,12 @@ import subprocess
 from p_terraformer.utils.helpers import generate_filename
 from p_terraformer.utils.helpers import file_handling
 
+def datadog_cmd(args):
+    if not args.no_tf:
+        aws_resources_output(args.terraform_version, args.aws_provider_version,args.aws_region)
+
 def aws_resources_output(resource,resource_id):
+    # TODO: Write summary
     """_summary_
 
     Args:

@@ -2,6 +2,12 @@ import argparse
 import os
 
 def parse_args():
+    # TODO: Write summary
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     parser = argparse.ArgumentParser(description="p_terraformer CLI")
     subparsers = parser.add_subparsers(
         dest="provider", help="p_terraformer instructions"
@@ -149,6 +155,9 @@ def parse_args():
         action='store_true',
         help="Display profile list"
     )
+
+    #terraformer install
+    profile_parser = subparsers.add_parser("terraformer_install", help="install terraformer")
 
     args = parser.parse_args()
     return args,parser,datadog_parser
