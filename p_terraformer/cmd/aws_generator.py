@@ -1,14 +1,17 @@
 import logging
 import subprocess
 
+from p_terraformer.cmd.terraform_generator import generation_aws
+
 from p_terraformer.utils.helpers import generate_filename
 from p_terraformer.utils.helpers import file_handling
 
-def datadog_cmd(args):
+def aws_cmd(args):
     if not args.no_tf:
-        aws_resources_output(args.terraform_version, args.aws_provider_version,args.aws_region)
+        generation_aws(args.terraform_ver, args.provider_ver, args.region)
+    aws_resources_output(args.terraform_version, args.aws_provider_version,args.aws_region)
 
-def aws_resources_output(resource,resource_id):
+def aws_resources_output(args):
     # TODO: Write summary
     """_summary_
 
@@ -22,8 +25,8 @@ def aws_resources_output(resource,resource_id):
                 "terraformer",
                 "import",
                 "datadog",
-                "--resources={}".format(resource),
-                "--filter={}={}".format(resource, resource_id),
+                "--resources={}".format(args.resource),
+                "--filter={}={}".format(args.resource, args.resource_id),
             ], check=True
         )
     except subprocess.CalledProcessError:
