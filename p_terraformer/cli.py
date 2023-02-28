@@ -4,7 +4,7 @@ allowing users to programmatically interact with Terraformer.
 """
 
 import logging
-from p_terraformer.cmd import terraformer_install
+from p_terraformer.cmd.terraformer_install import terraformer_install
 from p_terraformer.cmd.args import parse_args
 from p_terraformer.cmd.datadog_generator import datadog_cmd
 from p_terraformer.cmd.p_terraformer_config_generator import add_datadog_profile
@@ -12,6 +12,7 @@ from p_terraformer.cmd.p_terraformer_config_generator import add_datadog_profile
 def main():
     logging.basicConfig(level=logging.INFO)
     args,parser,datadog_parser=parse_args()
+    print(args)
     if args.provider == None:
         parser.print_help()
     elif args.provider == "datadog":

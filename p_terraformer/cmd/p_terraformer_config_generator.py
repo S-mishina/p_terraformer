@@ -12,16 +12,13 @@ def add_datadog_profile():
         resource_id (str):  aws resource id
         resource (str):     aws resource name
     """
-    # TODO: Make it possible to retrieve from the util
+
     p_terraformer_config_folder = os.getenv("HOME")+"/.p_terraformer"
     os.makedirs(p_terraformer_config_folder, exist_ok=True)
     p_terraformer_config_path=p_terraformer_config_folder+"/config.yaml"
-
     if not os.path.exists(p_terraformer_config_path):
         with open(p_terraformer_config_path, "w") as f:
             f.write("profile: []\n")
-
-    # TODO: If there is a profile with the same name, make it an update.
     data=profile_check()
     profile_name=input("Please enter a profile name >")
     api_key=input("secret manager api_key >")

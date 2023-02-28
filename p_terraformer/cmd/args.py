@@ -157,7 +157,8 @@ def parse_args():
     )
 
     #terraformer install
-    profile_parser = subparsers.add_parser("terraformer_install", help="install terraformer")
+    terraformer_install_parser = subparsers.add_parser("terraformer_install", help="Settings to use with p_terraformer")
+
 
     args = parser.parse_args()
     return args,parser,datadog_parser
