@@ -1,7 +1,6 @@
 def generation_aws(terraform_ver, provider_ver, region):
-    # TODO: Write summary
     """_summary_
-
+    Program to generate .tf for aws provider.
     Args:
         terraform_ver (_type_): _description_
         provider_ver (_type_): _description_
@@ -28,14 +27,12 @@ provider "aws" {{
 
 
 def generation_datadog(terraform_ver, provider_ver):
-    # TODO: Write summary
     """_summary_
-
+    Program to generate .tf for datadog provider.
     Args:
         terraform_ver (_type_): _description_
         provider_ver (_type_): _description_
     """
-
     template = """terraform {{
     required_version = "= {0}"
     required_providers {{
@@ -57,3 +54,4 @@ provider "datadog" {{
     )
     with open("main.tf", "w") as f:
         f.write(template)
+

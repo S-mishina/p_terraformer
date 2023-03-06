@@ -5,7 +5,7 @@ import logging
 
 def generate_filename():
     """_summary_
-
+    
     Returns:
         _type_: _description_
     """
@@ -24,6 +24,7 @@ def file_handling(dt_now):
 
 def terraform_init():
     """_summary_
+
     """
     try:
         subprocess.run(["terraform","init"])

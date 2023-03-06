@@ -14,15 +14,14 @@ def datadog_cmd(args):
 def datadog_resources_output(args):
     # TODO: Write summary
     """_summary_
-
+    This program generates terraform code for datadog using terraformer
     Args:
-        args (_type_): _description_
+        args (array): argument
     """
     if args.subcommand == "default_secret":
         api_key = args.api_key
         app_key = args.app_key
     else:
-        # TODO: get profile
         data=profile_check()
         result = [d for d in data["profile"] if d['name'] == args.profile]
         if not result:
@@ -48,7 +47,6 @@ def datadog_resources_output(args):
             check=True,
         )
     except subprocess.CalledProcessError:
-        # TODO: include an error phrase
-        logging.warning("")
+        logging.warning("Execution failed.")
     dt_now = generate_filename()
     file_handling(dt_now)

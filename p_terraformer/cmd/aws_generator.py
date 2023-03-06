@@ -24,13 +24,12 @@ def aws_resources_output(args):
             [
                 "terraformer",
                 "import",
-                "datadog",
+                "aws",
                 "--resources={}".format(args.resource),
                 "--filter={}={}".format(args.resource, args.resource_id),
             ], check=True
         )
     except subprocess.CalledProcessError:
-        # TODO: include an error phrase
-        logging.warning("")
+        logging.warning("Execution failed.")
     dt_now=generate_filename()
     file_handling(dt_now)

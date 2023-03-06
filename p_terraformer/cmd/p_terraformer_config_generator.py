@@ -5,9 +5,8 @@ import os
 from p_terraformer.config.cli_conf import profile_check
 
 def add_datadog_profile():
-    # TODO: Write summary
     """_summary_
-
+    datadog Function to record information to retrieve the access key and secret key.
     Args:
         resource_id (str):  aws resource id
         resource (str):     aws resource name
@@ -24,8 +23,7 @@ def add_datadog_profile():
     api_key=input("secret manager api_key >")
     app_key=input("secret manager app_key >")
     if profile_name == "" or api_key == "" or app_key == "":
-        logging.info("profile_name or api_key or app_key None")
-        return
+        return "profile_name or api_key or app_key None"
     result = [d for d in data["profile"] if d['name'] == profile_name]
     if not result:
         new_data = {
