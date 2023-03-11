@@ -17,9 +17,8 @@ def profile_check():
     return data
 
 def aws_secret_get(secret_name, secret_value, region_name):
-    # TODO: Write summary
     """_summary_
-
+    Retrieve data from aws secret manager
     Args:
         secret_name (str): secret manager secret name ex) hogehoge/hogehoge
         secret_value(str): secret manager secret key ex) api-key
