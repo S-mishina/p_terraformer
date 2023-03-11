@@ -2,8 +2,8 @@ import logging
 import subprocess
 from p_terraformer.utils.helpers import generate_filename
 from p_terraformer.utils.helpers import file_handling
-from p_terraformer.cmd.terraform_generator import *
-from p_terraformer.config.cli_conf import *
+from p_terraformer.cmd.terraform_generator import generation_datadog
+from p_terraformer.config.cli_conf import profile_check , aws_secret_get
 
 def datadog_cmd(args):
     # Whether to generate .tf files

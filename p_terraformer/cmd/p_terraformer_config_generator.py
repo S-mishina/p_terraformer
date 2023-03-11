@@ -7,9 +7,6 @@ from p_terraformer.config.cli_conf import profile_check
 def add_datadog_profile():
     """_summary_
     datadog Function to record information to retrieve the access key and secret key.
-    Args:
-        resource_id (str):  aws resource id
-        resource (str):     aws resource name
     """
 
     data=profile_check()
