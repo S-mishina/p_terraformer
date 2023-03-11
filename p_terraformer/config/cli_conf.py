@@ -7,6 +7,9 @@ import yaml
 def profile_check():
     p_terraformer_config_folder = os.getenv("HOME")+"/.p_terraformer"
     p_terraformer_config_path=p_terraformer_config_folder+"/config.yaml"
+    # TODO: throw an error if the file does not exist
+    if not os.path.exists(p_terraformer_config_path):
+        return None
     with open(p_terraformer_config_path, "r") as f:
         data = yaml.safe_load(f)
     return data
