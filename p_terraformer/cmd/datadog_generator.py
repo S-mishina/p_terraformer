@@ -27,7 +27,6 @@ def datadog_resources_output(args):
             result = [d for d in data["profile"] if d['name'] == args.profile]
         else:
             result=None
-        print(data)
         if not result:
             logging.info("""
             The profile does not exist.
