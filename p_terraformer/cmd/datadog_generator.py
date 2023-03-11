@@ -30,7 +30,7 @@ def datadog_resources_output(args):
         if not result:
             logging.info("""
             The profile does not exist.
-            sample Command: > p_terraformer profile <profile name>
+            sample Command: > p_terraformer profile
                         """)
             return
         else:

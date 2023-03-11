@@ -16,7 +16,6 @@ class test_add_datadog_profile(unittest.TestCase):
         profile_name = "test_profile"
         api_key = "test_api_key"
         app_key = "test_app_key"
-
         with mock.patch('builtins.input', side_effect=[profile_name, api_key, app_key]):
             command_output=add_datadog_profile()
             data=profile_check()

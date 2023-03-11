@@ -14,6 +14,7 @@ def aws_cmd(args):
 def aws_resources_output(args):
     # TODO: Write summary
     """_summary_
+    Code to run terraformer to generate aws resource
 
     Args:
         resource_id (str):  aws resource id
