@@ -49,7 +49,7 @@ def datadog_resources_output(args):
             ],
             check=True,
         )
-    except subprocess.CalledProcessError:
+        dt_now = generate_filename()
+        file_handling(dt_now)
+    except:
         logging.warning("Execution failed.")
-    dt_now = generate_filename()
-    file_handling(dt_now)
