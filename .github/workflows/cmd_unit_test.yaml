@@ -5,7 +5,7 @@ on:
     paths:
       - 'p_terraformer/cmd/*'
 jobs:
-  linter_view:
+  cmd-unittest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
