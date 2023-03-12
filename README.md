@@ -36,6 +36,8 @@ python setup.py install
 
 ### How to register for secret
 
+You can configure the profile by executing the following command and entering each item The entered information is recorded in `.p_terraformer/config.yaml`.
+
 ```:terminal
 $ p_terraformer profile
 
@@ -44,9 +46,6 @@ Please enter a profile name >hogehoge
 secret manager api_key >hogehoge
 secret manager app_key >hogehoge
 ```
-
-You can set up a profile by executing the above command and entering each item
-The information entered is recorded in `.p_terraformer/config.yaml`.
 
 ```:output
 ---example---
