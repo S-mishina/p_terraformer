@@ -1,6 +1,8 @@
+# on:
+#   release:
+#     types: [created]
 on:
-  release:
-    types: [created]
+  push:
 jobs:
   util-unittest:
     runs-on: ubuntu-latest
