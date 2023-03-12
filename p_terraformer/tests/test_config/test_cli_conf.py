@@ -16,10 +16,9 @@ class test_generation_aws(unittest.TestCase):
         self.assertEqual(output["profile"], [])
 
 class test_aws_secret_get(unittest.TestCase):
-    def setUp(self):
-        os.environ["TESTING_FLAG"] = "True"
 
     def test_aws_secret_get1(self):
+        os.environ["TESTING_FLAG"] = "True"
         secret_name = "test"
         secret_value = "test"
         region_name = "ap-northeast-1"
