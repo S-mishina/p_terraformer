@@ -26,8 +26,10 @@ def aws_secret_get(secret_name, secret_value, region_name):
 
     """
     session = boto3.session.Session()
-    client = session.client(
-        service_name="secretsmanager", region_name=region_name)
+    if os.environ.get("TESTING_FLAG") == "True":
+        client = session.client(service_name="secretsmanager", region_name=region_name, endpoint_url="http://localhost:4566")
+    else:
+        client = session.client(service_name="secretsmanager", region_name=region_name)
     try:
         get_secret_value_response = client.get_secret_value(
             SecretId=secret_name)
