@@ -15,13 +15,16 @@ terraformer must be installed to use p_terraformer.
 To install terraformer from official sources, please check the following documentation.
 An installation program is provided in this repository.
 
-### terraformer
+### install terraformer
 
 ```:terminal
 python terraformer_install.py
 ```
 
-### p_terraformer
+Please refer to the following document for official installation.
+ref: https://github.com/GoogleCloudPlatform/terraformer
+
+### install p_terraformer
 
 To install p_terraformer yourself, you will need to execute the following code
 
