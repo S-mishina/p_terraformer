@@ -18,8 +18,8 @@ class test_generation_aws(unittest.TestCase):
 class test_aws_secret_get(unittest.TestCase):
     def setUp(self):
         os.environ["TESTING_FLAG"] = "True"
-        os.environ["AWS_ACCESS_KEY_ID"] = ""
-        os.environ["AWS_SECRET_ACCESS_KEY"] = ""
+        os.environ["AWS_ACCESS_KEY_ID"] = "hogehoge"
+        os.environ["AWS_SECRET_ACCESS_KEY"] = "hogehoge"
     def test_aws_secret_get1(self):
         secret_name = "test"
         secret_value = "test"
