@@ -38,7 +38,7 @@ $ pip install p-terraformer
 ```
 ref: https://pypi.org/project/p-terraformer/
 
-To install using p_terraformer setup install you need to run the following code
+To install p_terraformer using setup.py, the following code must be executed.
 
 ```:terminal
 python setup.py install
