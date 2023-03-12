@@ -1,0 +1,11 @@
+function_test
+__pycache__
+dist
+build
+p_terraformer.egg-info
+main.tf
+test
+test1
+temp_profile.yaml
+.terraform
+*-*-*-*-*

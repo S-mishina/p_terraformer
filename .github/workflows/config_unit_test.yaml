@@ -1,0 +1,36 @@
+name: python config unittest
+
+on:
+  push:
+    paths:
+      - 'p_terraformer/config/*'
+jobs:
+  config-unittest:
+    runs-on: ubuntu-latest
+    services:
+      localstack:
+        image: localstack/localstack
+        ports:
+          - 4566:4566
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.15
+      - name: install requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: install awscli-local awscli
+        run: |
+          pip install awscli-local
+          pip install awscli
+      - name: add secret
+        run: |
+          awslocal secretsmanager create-secret --name test --secret-string '{"test":"test"}'  --endpoint-url=http://localhost:4566 --region ap-northeast-1
+      - name: config unit test
+        run: |
+          python -m unittest discover -s ./p_terraformer/tests/test_config -p "*.py"
