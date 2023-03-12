@@ -24,9 +24,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: install awscli-local
+      - name: install awscli-local awscli
         run: |
           pip install awscli-local
+          pip install awscli
       - name: Set AWS credentials
         env:
           AWS_ACCESS_KEY_ID: "hogehoge"
