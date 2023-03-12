@@ -5,7 +5,7 @@ on:
     paths:
       - 'p_terraformer/config/*'
 jobs:
-  cmd-unittest:
+  config-unittest:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ jobs:
           pip install -r requirements.txt
       - name: Start localstack
         run: |
-          docker-compose up -d localstack
+          docker run -p 4566:4566 localstack/localstack
       # - name: cmd unit test
       #   run: |
       #     python -m unittest discover -s ./p_terraformer/tests/test_cmd -p "*.py"
