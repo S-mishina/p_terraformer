@@ -33,6 +33,3 @@ jobs:
       - name: upload
         run: |
           twine upload --repository testpypi dist/*
-        with:
-          PYPI_USER: ${{ env.PYPI_USER }}
-          PYPI_PASSWORD: ${{ env.PYPI_PASSWORD }}
