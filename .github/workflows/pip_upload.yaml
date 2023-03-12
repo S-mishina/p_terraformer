@@ -6,9 +6,6 @@ on:
 jobs:
   pip-upload:
     runs-on: ubuntu-latest
-    env:
-      PYPI_USER: ${{ secrets.PYPI_USER }}
-      PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -31,5 +28,8 @@ jobs:
         run: |
           python setup.py bdist_wheel
       - name: upload
+        env:
+          PYPI_USER: ${{ secrets.PYPI_USER }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           twine upload --repository testpypi dist/*
