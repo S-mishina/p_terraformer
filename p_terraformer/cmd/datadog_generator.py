@@ -12,7 +12,6 @@ def datadog_cmd(args):
     datadog_resources_output(args)
 
 def datadog_resources_output(args):
-    # TODO: Write summary
     """_summary_
     This program generates terraform code for datadog using terraformer
     Args:

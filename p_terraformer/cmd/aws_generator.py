@@ -12,7 +12,6 @@ def aws_cmd(args):
     aws_resources_output(args.terraform_version, args.aws_provider_version,args.aws_region)
 
 def aws_resources_output(args):
-    # TODO: Write summary
     """_summary_
     Code to run terraformer to generate aws resource
 

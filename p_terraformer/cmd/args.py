@@ -2,12 +2,6 @@ import argparse
 import os
 
 def parse_args():
-    # TODO: Write summary
-    """_summary_
-
-    Returns:
-        _type_: _description_
-    """
     parser = argparse.ArgumentParser(description="p_terraformer CLI")
     subparsers = parser.add_subparsers(
         dest="provider", help="p_terraformer instructions"
