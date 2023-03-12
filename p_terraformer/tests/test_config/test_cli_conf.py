@@ -2,7 +2,6 @@ import unittest
 from unittest.mock import patch
 import os
 import tempfile
-import boto3
 from p_terraformer.config.cli_conf import profile_check , aws_secret_get
 
 class test_generation_aws(unittest.TestCase):
@@ -21,7 +20,6 @@ class test_aws_secret_get(unittest.TestCase):
         os.environ["TESTING_FLAG"] = "True"
 
     def test_aws_secret_get1(self):
-        session = boto3.session.Session()
         secret_name = "test"
         secret_value = "test"
         region_name = "ap-northeast-1"
