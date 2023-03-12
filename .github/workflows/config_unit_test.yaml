@@ -26,7 +26,7 @@ jobs:
           pip install -r requirements.txt
       - name: install awscli-local
         run: |
-          pip install awscli
+          pip install awscli-local
       - name: aws cli version
         run: |
           awslocal secretsmanager create-secret --name test --secret-string '{"test":"test"}'  --endpoint-url=http://localhost:4566
