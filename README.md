@@ -32,7 +32,13 @@ ref: https://github.com/GoogleCloudPlatform/terraformer
 
 ### install p_terraformer
 
-To install p_terraformer yourself, you will need to execute the following code
+To install using pip, run the following command
+```:terminal
+$ pip install p-terraformer
+```
+ref: https://pypi.org/project/p-terraformer/
+
+To install using p_terraformer setup install you need to run the following code
 
 ```:terminal
 python setup.py install
