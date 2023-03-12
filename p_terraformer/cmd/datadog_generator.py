@@ -1,7 +1,7 @@
 import logging
 import subprocess
 from p_terraformer.utils.helpers import generate_filename
-from p_terraformer.utils.helpers import file_handling
+from p_terraformer.utils.helpers import file_handling , terraform_init
 from p_terraformer.cmd.terraform_generator import generation_datadog
 from p_terraformer.config.cli_conf import profile_check , aws_secret_get
 
@@ -36,6 +36,7 @@ def datadog_resources_output(args):
             api_key = aws_secret_get(result[0]["api_key"], "api_key", args.region)
             app_key = aws_secret_get(result[0]["app_key"], "app_key", args.region)
     try:
+        terraform_init()
         subprocess.run(
             [
                 "terraformer",

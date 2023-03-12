@@ -16,8 +16,8 @@ def file_handling(dt_now):
     Args:
         dt_now (str): _description_
     """
-    # generated_dir = Path("generated")
-    # generated_dir.rename(dt_now)
+    generated_dir = Path("generated")
+    generated_dir.rename(dt_now)
 
 def terraform_init():
     """_summary_

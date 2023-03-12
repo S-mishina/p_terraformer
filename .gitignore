@@ -7,3 +7,5 @@ main.tf
 test
 test1
 temp_profile.yaml
+.terraform
+*-*-*-*-*
