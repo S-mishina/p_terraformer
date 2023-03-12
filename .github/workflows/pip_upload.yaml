@@ -1,0 +1,30 @@
+on:
+  release:
+    types: [created]
+jobs:
+  util-unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.15
+      - name: install requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: pip install wheel
+        run: |
+          pip install wheel
+          pip install twine
+      - name: python setup.py sdist
+        run: |
+          python setup.py sdist
+      - name: setup.py bdist_wheel
+        run: |
+          python setup.py bdist_wheel
+      - name: setup.py bdist_wheel
+        run: |
+          twine upload --repository testpypi dist/*
