@@ -2,12 +2,18 @@
 
 p_terraformer is a CLI that extends terraformer.
 
-## support platform
+## support
+
+### support platform
 
 The following environments are supported
 
 * Darwin
 * Linux
+
+### support python version
+
+* python version 3.9.x ~ 3.10.1
 
 ## install
 
