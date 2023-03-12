@@ -1,6 +1,8 @@
 function_test
 __pycache__
-dist
+dist/p_terraformer-0.1-py3.9.egg
+dist/p_terraformer-0.1-py3.10.egg
+dist/p_terraformer-0.1.tar.gz
 build
 p_terraformer.egg-info
 main.tf
@@ -9,3 +11,4 @@ test1
 temp_profile.yaml
 .terraform
 *-*-*-*-*
+.pypirc
