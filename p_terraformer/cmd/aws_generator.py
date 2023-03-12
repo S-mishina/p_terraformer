@@ -2,14 +2,14 @@ import logging
 import subprocess
 
 from p_terraformer.cmd.terraform_generator import generation_aws
-
+from p_terraformer.utils.helpers import file_handling , terraform_init
 from p_terraformer.utils.helpers import generate_filename
 from p_terraformer.utils.helpers import file_handling
 
 def aws_cmd(args):
     if not args.no_tf:
-        generation_aws(args.terraform_ver, args.provider_ver, args.region)
-    aws_resources_output(args.terraform_version, args.aws_provider_version,args.aws_region)
+        generation_aws(args.terraform_version, args.aws_provider_version, args.aws_region)
+    aws_resources_output(args)
 
 def aws_resources_output(args):
     """_summary_
@@ -19,6 +19,7 @@ def aws_resources_output(args):
         resource_id (str):  aws resource id
         resource (str):     aws resource name
     """
+    terraform_init()
     try:
         subprocess.run(
             [
@@ -26,10 +27,13 @@ def aws_resources_output(args):
                 "import",
                 "aws",
                 "--resources={}".format(args.resource),
-                "--filter={}={}".format(args.resource, args.resource_id),
+                "--filter={}".format(args.resource_id),
+                "--regions={}".format(args.aws_region),
+                "--profile={}".format(args.aws_profile),
             ], check=True
         )
-    except subprocess.CalledProcessError:
+        dt_now=generate_filename()
+        file_handling(dt_now)
+    except:
         logging.warning("Execution failed.")
-    dt_now=generate_filename()
-    file_handling(dt_now)
+        return

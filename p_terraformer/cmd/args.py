@@ -138,8 +138,8 @@ def parse_args():
     aws_parser.add_argument(
         "--aws_region",
         type=str,
-        default="us-east-1",
-        help="Use only to create a .tf for execution. default aws region us-east-1 ex) aws region us-east-1 >> input us-east-1",
+        default="ap-northeast-1",
+        help="Use only to create a .tf for execution. default aws region ap-northeast-1 ex) aws region ap-northeast-1 >> input ap-northeast-1",
     )
 
     #profile
