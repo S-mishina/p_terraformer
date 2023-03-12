@@ -29,7 +29,7 @@ jobs:
           pip install awscli
       - name: aws cli version
         run: |
-          awslocal secretsmanager create-secret --name test --secret-string '{"test":"test"}'
+          awslocal secretsmanager create-secret --name test --secret-string '{"test":"test"}'  --endpoint-url=http://localhost:4566
       - name: cmd unit test
         run: |
           python -m unittest discover -s ./p_terraformer/tests/test_cmd -p "*.py"
