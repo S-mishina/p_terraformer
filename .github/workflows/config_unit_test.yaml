@@ -5,7 +5,7 @@ on:
     paths:
       - 'p_terraformer/config/*'
 jobs:
-  localstack-start:
+  config-unittest:
     runs-on: ubuntu-latest
     services:
       localstack:
@@ -27,9 +27,9 @@ jobs:
       - name: install awscli-local
         run: |
           pip install awscli-local
-      - name: aws cli version
+      - name: add secret
         run: |
           awslocal secretsmanager create-secret --name test --secret-string '{"test":"test"}'  --endpoint-url=http://localhost:4566
-      - name: cmd unit test
+      - name: config unit test
         run: |
-          python -m unittest discover -s ./p_terraformer/tests/test_cmd -p "*.py"
+          python -m unittest discover -s ./p_terraformer/tests/test_config -p "*.py"
