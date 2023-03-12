@@ -3,7 +3,7 @@ name: python cmd unittest
 on:
   push:
     paths:
-      - 'p_terraformer/p_terraformer/cmd/*'
+      - 'p_terraformer/cmd/*'
 jobs:
   linter_view:
     runs-on: ubuntu-latest
