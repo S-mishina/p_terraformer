@@ -27,6 +27,16 @@ jobs:
       - name: install awscli-local
         run: |
           pip install awscli-local
+      - name: Set AWS credentials
+        env:
+          AWS_ACCESS_KEY_ID: "hogehoge"
+          AWS_SECRET_ACCESS_KEY: "hogehoge"
+        run: |
+          # Configure the AWS CLI with the credentials
+          aws configure --profile default \
+            set aws_access_key_id $AWS_ACCESS_KEY_ID \
+            set aws_secret_access_key $AWS_SECRET_ACCESS_KEY \
+            set default.region us-east-1
       - name: add secret
         run: |
           awslocal secretsmanager create-secret --name test --secret-string '{"test":"test"}'  --endpoint-url=http://localhost:4566
