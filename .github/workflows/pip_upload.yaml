@@ -1,6 +1,7 @@
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 jobs:
   pip-upload:
     runs-on: ubuntu-latest
