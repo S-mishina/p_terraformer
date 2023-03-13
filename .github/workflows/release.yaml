@@ -2,8 +2,8 @@ name: Release
 
 on:
   push:
-    branches:
-      - v*
+    # branches:
+    #   - v*
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -24,5 +24,5 @@ jobs:
         uses: release-drafter/release-drafter@v6.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          config-file: .github/release-drafter.yml
+          config-file: .github/release-drafter.yaml
 
