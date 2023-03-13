@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    # branches:
+    #   - v*
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.15
+
+      - name: Install dependencies
+        run: pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Generate release notes
+        uses: release-drafter/release-drafter@v5.23.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-name: .github/release-drafter.yaml
+
