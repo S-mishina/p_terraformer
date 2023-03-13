@@ -24,5 +24,5 @@ jobs:
         uses: release-drafter/release-drafter@v5.23.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          config-file: .github/release-drafter.yaml
+          config-name: .github/release-drafter.yaml
 
