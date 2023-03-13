@@ -1,0 +1,6 @@
+template: |
+  ## {{ .ReleaseName }}
+  {{ range .MergedPRs }}
+  - {{ .Title }} ([#{{ .Number }}]({{ .URL }}))
+  {{ end }}
+
