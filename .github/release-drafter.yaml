@@ -1,6 +1,4 @@
 template: |
-  ## {{ .ReleaseName }}
-  {{ range .MergedPRs }}
-  - {{ .Title }} ([#{{ .Number }}]({{ .URL }}))
-  {{ end }}
+  ## What’s Changed
 
+  $CHANGES
