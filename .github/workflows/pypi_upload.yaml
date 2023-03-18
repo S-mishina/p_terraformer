@@ -1,9 +1,9 @@
 on:
   push:
-    # branches:
-    #   - main
-    # paths:
-    #   - 'setup.py'
+    branches:
+      - main
+    paths:
+      - 'setup.py'
 jobs:
   pip-upload:
     runs-on: ubuntu-latest

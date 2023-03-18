@@ -92,10 +92,10 @@ p_terraformer datadog default_secret --api_key hogehoge --app_key hogehoge--reso
 * Generate sqs
 
 ```:terminal
-p_terraformer aws --resource sqs --resource_id aws_sqs_queue=hogehoge --aws_profile=hogehoge
+p_terraformer aws --resource sqs --filter aws_sqs_queue=hogehoge --aws_profile=hogehoge
 ```
 
-You can output the resource you want to retrieve by entering the name of the resource you want to retrieve in `--resource`, the filter in `--resource_id`, and the profile name of the environment you want to retrieve in `--aws_profile`.
+You can output the resource you want to retrieve by entering the name of the resource you want to retrieve in `--resource`, the filter in `--filter`, and the profile name of the environment you want to retrieve in `--aws_profile`.
 
 ※The default value for `--aws_profile` is default.
 
