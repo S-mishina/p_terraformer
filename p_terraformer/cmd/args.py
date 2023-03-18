@@ -116,10 +116,10 @@ def parse_args():
         help="default aws resource vpc :ex) datadog resource is vpc >> input vpc",
     )
     aws_parser.add_argument(
-        "--resource_id",
+        "--filter",
         type=str,
         required=True,
-        help="datadog resource id :ex) datadog resource id is xxxxx >> input resource id xxxxx",
+        help="for vpc id vpc---xxxxxxxxxx, enter vpc=vpc-xxxxxxxxxxx",
     )
     aws_parser.add_argument('--no-tf', action='store_true',
                     help='Do not generate .tf files')
