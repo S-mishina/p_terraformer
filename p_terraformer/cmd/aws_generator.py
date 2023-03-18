@@ -16,7 +16,7 @@ def aws_resources_output(args):
     Code to run terraformer to generate aws resource
 
     Args:
-        resource_id (str):  aws resource id
+        filter (str):       aws filter
         resource (str):     aws resource name
     """
     terraform_init()
@@ -27,7 +27,7 @@ def aws_resources_output(args):
                 "import",
                 "aws",
                 "--resources={}".format(args.resource),
-                "--filter={}".format(args.resource_id),
+                "--filter={}".format(args.filter),
                 "--regions={}".format(args.aws_region),
                 "--profile={}".format(args.aws_profile),
             ], check=True
