@@ -1,4 +1,3 @@
-# setup.py
 from setuptools import setup, find_packages
 
 URL = 'https://github.com/S-mishina/p_terraformer'
